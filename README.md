@@ -1,40 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🤖 AI Mock Interviewer
 
-## Getting Started
+AI Mock Interviewer is a smart web app that simulates a real-time interview experience. It uses AI to ask role-based questions, listens to your answers via mic, shows your video, gives feedback, and helps you practice for real interviews confidently.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🎤 **Speech-to-Text**: Converts your spoken answers into text automatically.
+- 🎥 **Webcam Support**: Live camera preview for realistic interview simulation.
+- 🧠 **AI-Driven Questions**: Role-based dynamic questions using Groq/OpenAI API.
+- ⏱️ **Auto Submission**: Automatically submits answer after 10 seconds of silence.
+- 📝 **AI Feedback**: Gives instant feedback + follow-up question after each answer.
+- 🔟 **10 Questions Total**: Interview ends after 10 questions with a final summary.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js (Pages Router) + Tailwind CSS
+- **Backend**: API Routes in Next.js
+- **AI**: Groq API (uses OpenAI models)
+- **Mic & Camera**: `webkitSpeechRecognition` + `navigator.mediaDevices.getUserMedia`
+
+## 📁 Project Structure
+
+```
+ai-mock-interviewer/
+│
+├── pages/
+│   ├── api/
+│   │   ├── start.js          # Starts the interview with the first question
+│   │   ├── interview.js      # Handles answers, gives feedback & next question
+│   │   └── feedback.js       # Final feedback after 10 questions
+│   └── interview.js          # Main frontend page with mic, camera, flow
+│
+├── public/                   # Static assets
+├── styles/                  # Global styles
+├── .env.example             # Sample environment file
+└── README.md                # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧪 How It Works
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. **Start Interview** ➝ The app asks "Introduce yourself".
+2. **Speak Your Answer** ➝ Mic records and converts to text.
+3. **AI Responds** ➝ Gives feedback + follow-up question.
+4. **Repeats for 10 questions** ➝ Then final feedback is shown.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🔐 Environment Variables
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+Rename `.env.example` to `.env.local` and set your keys:
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+GROQ_API_KEY=your-real-api-key-here
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
+```
 
-## Learn More
+## 🧑‍💻 Getting Started (Local Setup)
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git clone https://github.com/sahillakade60/AI-Mock-Interviewer.git
+cd AI-Mock-Interviewer
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+# Install dependencies
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Start development server
+npm run dev
+```
 
-## Deploy on Vercel
+Open `http://localhost:3000/interview` in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+You can deploy this project to:
+
+- **Vercel** (best for Next.js)
+- **Netlify**
+- **Render**
+
+Just make sure to set the same environment variables in their dashboard.
+
+## 📸 Demo Preview
+
+> 🎬 (You can add a link here later to a YouTube or Loom demo)
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## 🙌 Acknowledgements
+
+- [Groq](https://console.groq.com/) for lightning-fast OpenAI-compatible inference.
+- [OpenAI](https://platform.openai.com/) for powerful language models.
+- Inspired by real-world interview prep needs of developers and students.
